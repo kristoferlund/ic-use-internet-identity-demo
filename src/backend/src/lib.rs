@@ -1,6 +1,5 @@
-use std::cell::RefCell;
-
 use ic_cdk::{query, update};
+use std::cell::RefCell;
 
 thread_local! {
     static COUNTER : RefCell<u32> = RefCell::new(0);
