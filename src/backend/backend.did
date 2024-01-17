@@ -1,0 +1,5 @@
+service : () -> {
+  "whoami" : () -> (text);
+  "get_counter" : () -> (nat32);
+  "inc_counter" : () -> (nat32);
+};
