@@ -41,7 +41,7 @@ function App() {
           href="https://github.com/kristoferlund/ic-use-internet-identity-demo"
           className="underline"
         >
-          Fork this demo on GitHub.
+          Fork this demo.
         </a>
       </div>
     </div>
