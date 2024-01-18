@@ -43,7 +43,7 @@ export function Counter() {
     <div className="flex items-center">
       Counter:
       <div className="inline-block h-16 px-5 ml-3 rounded bg-zinc-600">
-        {counter || <Spinner className="w-10 h-16" />}
+        {counter === undefined ? <Spinner className="w-10 h-16" /> : counter}
       </div>
       <button
         onClick={handleClick}
