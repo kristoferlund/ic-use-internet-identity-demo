@@ -15,7 +15,7 @@ export function LoginButton() {
   }
 
   let className =
-    "flex h-16 px-5 font-bold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700 disabled:bg-blue-500/20 disabled:hover:bg-blue-500/20";
+    "flex px-5 font-bold text-white bg-blue-500 rounded cursor-pointer h-9 md:h-16 hover:bg-blue-700 disabled:bg-blue-500/20 disabled:hover:bg-blue-500/20";
   className = isLoggingIn
     ? twMerge(className, "cursor-wait")
     : twMerge(className, "cursor-pointer");
@@ -27,7 +27,7 @@ export function LoginButton() {
       return (
         <>
           Logging in
-          <Spinner className="w-20 h-20 ml-3" />
+          <Spinner className="w-10 h-10 ml-3 md:w-20 md:h-20" />
         </>
       );
     }

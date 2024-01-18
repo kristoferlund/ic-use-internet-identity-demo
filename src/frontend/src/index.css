@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 html {
-  @apply font-sans bg-zinc-800 text-zinc-300;
+  @apply font-sans bg-slate-700 text-zinc-300;
 }
