@@ -1,14 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 import {
   ActorProvider,
-  createActorContext,
-  createUseActorHook,
-} from "ic-use-actor";
-import {
   InterceptorErrorData,
   InterceptorRequestData,
   InterceptorResponseData,
-} from "ic-use-actor/dist/interceptor-data.type";
+  createActorContext,
+  createUseActorHook,
+  isIdentityExpiredError,
+} from "ic-use-actor";
 import { canisterId, idlFactory } from "../../../declarations/backend/index";
 
 import { ReactNode } from "react";
@@ -40,38 +39,16 @@ export default function Actors({ children }: { children: ReactNode }) {
     return data.error;
   };
 
-  // This could be done using a library like Zod, but I don't want to add a dependency for this one check.
-  const isAuthError = (data: unknown) => {
-    if (typeof data !== "object" || data === null || !("error" in data))
-      return false;
-
-    const { error } = data;
-    if (
-      typeof error !== "object" ||
-      error === null ||
-      !("name" in error) ||
-      error.name !== "AgentHTTPResponseError" ||
-      !("message" in error) ||
-      typeof error.message !== "string" ||
-      !error.message.includes("Failed to authenticate request") ||
-      !("response" in error) ||
-      error.response === null ||
-      typeof error.response !== "object"
-    )
-      return false;
-
-    return "status" in error.response && error.response.status === 403;
-  };
-
   const handleResponseError = (data: InterceptorErrorData) => {
     console.log("onResponseError", data.args, data.methodName, data.error);
-    if (isAuthError(data.error)) {
-      toast.error("Invalid Identity", {
-        id: "invalid-identity",
+    if (isIdentityExpiredError(data.error)) {
+      toast.error("Login expired.", {
+        id: "login-expired",
         position: "bottom-right",
       });
       setTimeout(() => {
         clear(); // Clears the identity from the state and local storage. Effectively "logs the user out".
+        window.location.reload(); // Reloads the page to reset the UI.
       }, 1000);
       return;
     }
