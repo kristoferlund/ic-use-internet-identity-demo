@@ -8,12 +8,12 @@ dotenv.config();
 const processEnvCanisterIds = Object.fromEntries(
   Object.entries(process.env)
     .filter(([key]) => key.startsWith("CANISTER_ID"))
-    .map(([key, value]) => [`process.env.${key}`, JSON.stringify(value)])
+    .map(([key, value]) => [`process.env.${key}`, JSON.stringify(value)]),
 );
 
 const internetIdentityUrl =
   process.env.DFX_NETWORK === "local"
-    ? `http://localhost:4943/?canisterId=${process.env.INTERNET_IDENTITY_CANISTER_ID}`
+    ? `http://localhost:4943/?canisterId=${process.env.CANISTER_ID_INTERNET_IDENTITY}`
     : `https://identity.ic0.app`;
 
 console.log("internetIdentityUrl", internetIdentityUrl);
