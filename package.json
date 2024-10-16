@@ -1,6 +1,6 @@
 {
   "name": "ic-use-internet-identity-demo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React/Vite template and demo. Use ic-use-internet-identity to authenticate IC users easily.",
   "author": "Kristofer Lund <kristofer@kristoferlund.se>",
   "repository": {
@@ -32,17 +32,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dfinity/agent": "^2.1.1",
-    "@dfinity/auth-client": "^2.1.1",
-    "@dfinity/identity": "^2.1.1",
-    "@dfinity/candid": "^2.1.1",
+    "@dfinity/agent": "^2.1.2",
+    "@dfinity/auth-client": "^2.1.2",
+    "@dfinity/identity": "^2.1.2",
+    "@dfinity/candid": "^2.1.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "ic-use-actor": "^0.0.10",
-    "ic-use-internet-identity": "^0.0.11",
+    "ic-use-actor": "^0.1.0",
+    "ic-use-internet-identity": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",

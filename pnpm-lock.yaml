@@ -2,17 +2,17 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@dfinity/agent':
-    specifier: ^2.1.1
-    version: 2.1.1(@dfinity/candid@2.1.1)(@dfinity/principal@2.1.2)
+    specifier: ^2.1.2
+    version: 2.1.2(@dfinity/candid@2.1.2)(@dfinity/principal@2.1.2)
   '@dfinity/auth-client':
-    specifier: ^2.1.1
-    version: 2.1.1(@dfinity/agent@2.1.1)(@dfinity/identity@2.1.1)(@dfinity/principal@2.1.2)
+    specifier: ^2.1.2
+    version: 2.1.2(@dfinity/agent@2.1.2)(@dfinity/identity@2.1.2)(@dfinity/principal@2.1.2)
   '@dfinity/candid':
-    specifier: ^2.1.1
-    version: 2.1.1(@dfinity/principal@2.1.2)
+    specifier: ^2.1.2
+    version: 2.1.2(@dfinity/principal@2.1.2)
   '@dfinity/identity':
-    specifier: ^2.1.1
-    version: 2.1.1(@dfinity/agent@2.1.1)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0)
+    specifier: ^2.1.2
+    version: 2.1.2(@dfinity/agent@2.1.2)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0)
   '@fortawesome/fontawesome-svg-core':
     specifier: ^6.4.2
     version: 6.4.2
@@ -29,11 +29,11 @@ dependencies:
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.4.2)(react@18.2.0)
   ic-use-actor:
-    specifier: ^0.0.10
-    version: 0.0.10(@dfinity/agent@2.1.1)(@dfinity/candid@2.1.1)(react@18.2.0)
+    specifier: ^0.1.0
+    version: 0.1.0(@dfinity/agent@2.1.2)(@dfinity/candid@2.1.2)(react@18.2.0)
   ic-use-internet-identity:
-    specifier: ^0.0.11
-    version: 0.0.11(@dfinity/agent@2.1.1)(@dfinity/auth-client@2.1.1)(@dfinity/identity@2.1.1)(react@18.2.0)
+    specifier: ^0.1.0
+    version: 0.1.0(@dfinity/agent@2.1.2)(@dfinity/auth-client@2.1.2)(@dfinity/identity@2.1.2)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -313,13 +313,13 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@dfinity/agent@2.1.1(@dfinity/candid@2.1.1)(@dfinity/principal@2.1.2):
-    resolution: {integrity: sha512-9+XPFc9PrXM0kmaqZOOVW3eXBGaWzOjnnbEa55J1NBuDA6+X2jAyE51I62zXr1oFwMeKj7ykOEFd5MOmnMEijA==}
+  /@dfinity/agent@2.1.2(@dfinity/candid@2.1.2)(@dfinity/principal@2.1.2):
+    resolution: {integrity: sha512-UAXf6uXovhBlSp245RWlA21zcCavy+vVUvKVQUpesk1gLJpJlvsCE6hYOwTeFZAP+bjmPi0Tl7cx8DT2KM4eDQ==}
     peerDependencies:
-      '@dfinity/candid': ^2.1.1
-      '@dfinity/principal': ^2.1.1
+      '@dfinity/candid': ^2.1.2
+      '@dfinity/principal': ^2.1.2
     dependencies:
-      '@dfinity/candid': 2.1.1(@dfinity/principal@2.1.2)
+      '@dfinity/candid': 2.1.2(@dfinity/principal@2.1.2)
       '@dfinity/principal': 2.1.2
       '@noble/curves': 1.6.0
       '@noble/hashes': 1.5.0
@@ -329,35 +329,35 @@ packages:
       simple-cbor: 0.4.1
     dev: false
 
-  /@dfinity/auth-client@2.1.1(@dfinity/agent@2.1.1)(@dfinity/identity@2.1.1)(@dfinity/principal@2.1.2):
-    resolution: {integrity: sha512-yvP3g9Y4ZnBw7GVy37ICFKt+2pZ3BAtOqbia5OSnaMRXgpgmfIvvyxFbMIrIDzLQJM+EuEmm1ZomXCyeFWDqyw==}
+  /@dfinity/auth-client@2.1.2(@dfinity/agent@2.1.2)(@dfinity/identity@2.1.2)(@dfinity/principal@2.1.2):
+    resolution: {integrity: sha512-3wIbap6NQi+6z/o+kEFfOQmWuIz94/j1efVlkBtLO0IWqC5NZqoMppwANZZCkENeMvI0krhqH3asQvediWKIsg==}
     peerDependencies:
-      '@dfinity/agent': ^2.1.1
-      '@dfinity/identity': ^2.1.1
-      '@dfinity/principal': ^2.1.1
+      '@dfinity/agent': ^2.1.2
+      '@dfinity/identity': ^2.1.2
+      '@dfinity/principal': ^2.1.2
     dependencies:
-      '@dfinity/agent': 2.1.1(@dfinity/candid@2.1.1)(@dfinity/principal@2.1.2)
-      '@dfinity/identity': 2.1.1(@dfinity/agent@2.1.1)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0)
+      '@dfinity/agent': 2.1.2(@dfinity/candid@2.1.2)(@dfinity/principal@2.1.2)
+      '@dfinity/identity': 2.1.2(@dfinity/agent@2.1.2)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0)
       '@dfinity/principal': 2.1.2
       idb: 7.1.1
     dev: false
 
-  /@dfinity/candid@2.1.1(@dfinity/principal@2.1.2):
-    resolution: {integrity: sha512-RVcTKko8wLys2yW84e9Fu/AcJkZOdH7U/Rlm3Pgcx81fnfm74hxKCoecTYD+awbD2HSlVJRB/Uo7NoAoE/N+gQ==}
+  /@dfinity/candid@2.1.2(@dfinity/principal@2.1.2):
+    resolution: {integrity: sha512-do69J9iahW2tlmbPdbmc8MDhi5cfIQyTcAlYqaSOOAyg+Kp8beCnW7mletXVfx30dyVlpkyCrYOXhbpQuSCKtw==}
     peerDependencies:
-      '@dfinity/principal': ^2.1.1
+      '@dfinity/principal': ^2.1.2
     dependencies:
       '@dfinity/principal': 2.1.2
     dev: false
 
-  /@dfinity/identity@2.1.1(@dfinity/agent@2.1.1)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0):
-    resolution: {integrity: sha512-Imls2yplJG8KUM4WRW3PHHaC1zJR/xGy6usXpkwJSV3zQVWuxTL0+myM20pTa3qO9RFawPDBtnu1/e14KJZ7Kw==}
+  /@dfinity/identity@2.1.2(@dfinity/agent@2.1.2)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0):
+    resolution: {integrity: sha512-LgskXJzyqm1UVsobAkF8bL1/SdLKFYW2kTIsKw7UOhuBy/COpnf3HZYmKeFCnxvharyIyq23W3WBhIpu9FeAvw==}
     peerDependencies:
-      '@dfinity/agent': ^2.1.1
-      '@dfinity/principal': ^2.1.1
+      '@dfinity/agent': ^2.1.2
+      '@dfinity/principal': ^2.1.2
       '@peculiar/webcrypto': ^1.4.0
     dependencies:
-      '@dfinity/agent': 2.1.1(@dfinity/candid@2.1.1)(@dfinity/principal@2.1.2)
+      '@dfinity/agent': 2.1.2(@dfinity/candid@2.1.2)(@dfinity/principal@2.1.2)
       '@dfinity/principal': 2.1.2
       '@noble/curves': 1.6.0
       '@noble/hashes': 1.5.0
@@ -2224,29 +2224,29 @@ packages:
       function-bind: 1.1.2
     dev: true
 
-  /ic-use-actor@0.0.10(@dfinity/agent@2.1.1)(@dfinity/candid@2.1.1)(react@18.2.0):
-    resolution: {integrity: sha512-lmQiePwHYUSnCfRsEJL/gnTrHv0f8sPwfcgMxrn9PNnHMoOkuZX5+ijIJ7uuIEdrX0d1rTRbQrbUNZkXlZ0uqw==}
+  /ic-use-actor@0.1.0(@dfinity/agent@2.1.2)(@dfinity/candid@2.1.2)(react@18.2.0):
+    resolution: {integrity: sha512-Q2umozofJDYAZf8apfgKj432PRBpQ1BN03KNtO3uafAxTJJKDCwXj8gq3ijpMUV4IBgLB0plt5nJqqpxYKMqmA==}
     peerDependencies:
-      '@dfinity/agent': '>=1.2.1'
-      '@dfinity/candid': '>=1.2.1'
+      '@dfinity/agent': '>=2.1.2'
+      '@dfinity/candid': '>=2.1.2'
       react: '>=18.0.0'
     dependencies:
-      '@dfinity/agent': 2.1.1(@dfinity/candid@2.1.1)(@dfinity/principal@2.1.2)
-      '@dfinity/candid': 2.1.1(@dfinity/principal@2.1.2)
+      '@dfinity/agent': 2.1.2(@dfinity/candid@2.1.2)(@dfinity/principal@2.1.2)
+      '@dfinity/candid': 2.1.2(@dfinity/principal@2.1.2)
       react: 18.2.0
     dev: false
 
-  /ic-use-internet-identity@0.0.11(@dfinity/agent@2.1.1)(@dfinity/auth-client@2.1.1)(@dfinity/identity@2.1.1)(react@18.2.0):
-    resolution: {integrity: sha512-9uBEsF/39IAjriotS0sL51veix5wmbFi28ecuZ9V8rv52KVx4hHJc8VT0xIe89fzOSHfAIlcgAxSVAZzWWUF4A==}
+  /ic-use-internet-identity@0.1.0(@dfinity/agent@2.1.2)(@dfinity/auth-client@2.1.2)(@dfinity/identity@2.1.2)(react@18.2.0):
+    resolution: {integrity: sha512-6Lp9E1XtNwYU/ScMUVCrPbtpQxWT7nU4s7QzEyAQaPZ+o3Z78G6JY8mxwU5CUZJDion9zLUkE7KXHNQNFGlKPA==}
     peerDependencies:
-      '@dfinity/agent': '>=1.2.1'
-      '@dfinity/auth-client': '>=1.2.1'
-      '@dfinity/identity': '>=1.2.1'
+      '@dfinity/agent': '>=2.1.2'
+      '@dfinity/auth-client': '>=2.1.2'
+      '@dfinity/identity': '>=2.1.2'
       react: '>=18.0.0'
     dependencies:
-      '@dfinity/agent': 2.1.1(@dfinity/candid@2.1.1)(@dfinity/principal@2.1.2)
-      '@dfinity/auth-client': 2.1.1(@dfinity/agent@2.1.1)(@dfinity/identity@2.1.1)(@dfinity/principal@2.1.2)
-      '@dfinity/identity': 2.1.1(@dfinity/agent@2.1.1)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0)
+      '@dfinity/agent': 2.1.2(@dfinity/candid@2.1.2)(@dfinity/principal@2.1.2)
+      '@dfinity/auth-client': 2.1.2(@dfinity/agent@2.1.2)(@dfinity/identity@2.1.2)(@dfinity/principal@2.1.2)
+      '@dfinity/identity': 2.1.2(@dfinity/agent@2.1.2)(@dfinity/principal@2.1.2)(@peculiar/webcrypto@1.5.0)
       react: 18.2.0
     dev: false
 
