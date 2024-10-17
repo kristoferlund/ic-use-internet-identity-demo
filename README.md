@@ -1,10 +1,10 @@
 ![ic-use-internet-identity-demo](/media/header.png)
 
-This demo application demonstrates how to use the `ic-use-internet-identity` hook to create a simple login flow for a React application communicating with a canister on the [Internet Computer](https://internetcomputer.org).
+This demo application demonstrates how to use the [`ic-use-internet-identity`](https://www.npmjs.com/package/ic-use-internet-identity) hook to create a simple login flow for a React application communicating with a canister on the [Internet Computer](https://internetcomputer.org).
 
 [Internet Identity](https://internetcomputer.org/how-it-works/web-authentication-identity) is an authentication service running on the Internet Computer. It allows users to create an identity that can be used to authenticate with canisters (smart contracts) running on the Internet Computer.
 
-`ic-use-internet-identity` is a hook that makes it easy to integrate Internet Identity into your React application. It provides a simple interface for logging in and out with the Internet Identity service.
+[ic-use-internet-identity](https://www.npmjs.com/package/ic-use-internet-identity) is a hook that makes it easy to integrate Internet Identity into your React application. It provides a simple interface for logging in and out with the Internet Identity service.
 
 ## 👀 Try the live demo: https://x2jdf-giaaa-aaaal-qc66a-cai.icp0.io
 
@@ -112,7 +112,7 @@ export function LoginButton() {
 
 The `identity` context variable contains the identity of the currently logged in user. The identity is available after successfully loading the identity from local storage or completing the login process.
 
-The preferred way to use the identity is to connect it to the [ic-use-actor](https://www.npmjs.com/kristoferlund/ic-use-actor) hook. The hook provides a typed interface to the canister methods as well as interceptor functions for handling errors etc.
+The preferred way to use the identity is to connect it to the [ic-use-actor](https://www.npmjs.com/package/ic-use-actor) hook. The hook provides a typed interface to the canister methods as well as interceptor functions for handling errors etc.
 
 ```jsx
 // Actors.tsx
