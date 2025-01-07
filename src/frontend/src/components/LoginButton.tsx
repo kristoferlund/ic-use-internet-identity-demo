@@ -6,11 +6,11 @@ export function LoginButton() {
   const { isLoggingIn, login, clear, identity } = useInternetIdentity();
 
   // If the user is logged in, clear the identity. Otherwise, log in.
-  function handleClick() {
+  async function handleClick() {
     if (identity) {
-      clear();
+      await clear();
     } else {
-      login();
+      await login();
     }
   }
 

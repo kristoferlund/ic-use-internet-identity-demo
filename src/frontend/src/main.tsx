@@ -18,5 +18,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         />
       </Actors>
     </InternetIdentityProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

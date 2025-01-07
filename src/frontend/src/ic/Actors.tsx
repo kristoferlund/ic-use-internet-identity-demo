@@ -9,7 +9,6 @@ import {
   isIdentityExpiredError,
 } from "ic-use-actor";
 import { canisterId, idlFactory } from "../../../declarations/backend/index";
-
 import { ReactNode } from "react";
 import { _SERVICE } from "../../../declarations/backend/backend.did";
 import toast from "react-hot-toast";
