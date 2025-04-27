@@ -6,7 +6,7 @@ This demo application demonstrates how to use the `ic-use-internet-identity` hoo
 
 `ic-use-internet-identity` is a hook that makes it easy to integrate Internet Identity into your React application. It provides a simple interface for logging in and out with the Internet Identity service.
 
-## 👀 Try the live demo: https://x2jdf-giaaa-aaaal-qc66a-cai.icp0.io
+## 👀 Try the live demo: <https://x2jdf-giaaa-aaaal-qc66a-cai.icp0.io>
 
 ## Key features
 
@@ -50,7 +50,7 @@ The frontend is a React application that interacts with the backend canister. To
 ## Run locally
 
 ```bash
-npm i
+pnpm i
 dfx start --clean --background
 dfx deploy
 ```
