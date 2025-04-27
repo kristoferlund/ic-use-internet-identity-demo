@@ -20,7 +20,7 @@
       "dependencies": ["backend"],
       "source": ["dist"],
       "type": "assets",
-      "build": ["npm run build"]
+      "build": ["pnpm run build"]
     }
   },
   "output_env_file": ".env",
