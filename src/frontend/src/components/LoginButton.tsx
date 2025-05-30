@@ -10,7 +10,7 @@ export function LoginButton() {
     if (identity) {
       await clear();
     } else {
-      await login();
+      login();
     }
   }
 
