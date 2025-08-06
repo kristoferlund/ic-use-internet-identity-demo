@@ -1,14 +1,17 @@
 import Spinner from "./Spinner";
 import { twMerge } from "tailwind-merge";
 import { useInternetIdentity } from "ic-use-internet-identity";
+import { useBackend } from "../ic/Backend";
 
 export function LoginButton() {
-  const { isLoggingIn, login, clear, identity } = useInternetIdentity();
+  const { isLoggingIn, login, clear: clearIdentity, identity } = useInternetIdentity();
+  const { reset: resetBackend } = useBackend();
 
   // If the user is logged in, clear the identity. Otherwise, log in.
-  async function handleClick() {
+  function handleClick() {
     if (identity) {
-      await clear();
+      clearIdentity();
+      resetBackend();
     } else {
       login();
     }

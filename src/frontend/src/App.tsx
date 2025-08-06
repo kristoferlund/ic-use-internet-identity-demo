@@ -4,7 +4,9 @@ import { useInternetIdentity } from "ic-use-internet-identity";
 import PrincipalPill from "./components/PrincipalPill";
 
 function App() {
-  const { identity } = useInternetIdentity();
+  const { identity, status } = useInternetIdentity();
+
+  console.log("status: ", status);
 
   return (
     <div className="flex flex-col items-center w-full gap-5 p-10 font-sans text-2xl italic md:items-start md:gap-10 md:text-6xl">
