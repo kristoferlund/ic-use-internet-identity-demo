@@ -11,13 +11,6 @@ const processEnvCanisterIds = Object.fromEntries(
     .map(([key, value]) => [`process.env.${key}`, JSON.stringify(value)]),
 );
 
-const internetIdentityUrl =
-  process.env.DFX_NETWORK === "local"
-    ? `http://localhost:4943/?canisterId=${process.env.CANISTER_ID_INTERNET_IDENTITY}`
-    : `https://identity.ic0.app`;
-
-console.log("internetIdentityUrl", internetIdentityUrl);
-
 export default defineConfig({
   plugins: [react()],
   root: "src/frontend",
@@ -42,7 +35,6 @@ export default defineConfig({
     ...processEnvCanisterIds,
     "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
     "process.env.DFX_NETWORK": JSON.stringify(process.env.DFX_NETWORK),
-    "process.env.II_URL": JSON.stringify(internetIdentityUrl),
     global: "globalThis",
   },
 });

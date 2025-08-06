@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import Spinner from "./Spinner";
-import { useBackend } from "../ic/Actors";
 import { useInternetIdentity } from "ic-use-internet-identity";
+import { useBackend } from "../ic/Backend";
 
 export function Counter() {
   const { actor: backend } = useBackend();

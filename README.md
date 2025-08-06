@@ -14,6 +14,7 @@ The demo is built using [Vite](https://vitejs.dev/) to provide a fast developmen
 
 - TypeScript
 - TailwindCSS
+- React Hot Toast for notifications
 
 ## Table of contents
 
@@ -22,10 +23,11 @@ The demo is built using [Vite](https://vitejs.dev/) to provide a fast developmen
   - [Frontend](#frontend)
 - [Run locally](#run-locally)
 - [`ic-use-internet-identity` Features](#ic-use-internet-identity-features)
-- [Details](#details)
+- [Implementation Details](#implementation-details)
   - [1. The `InternetIdentityProvider` component](#1-the-internetidentityprovider-component)
-  - [2. Connect the `login()` function to a button](#2-connect-the-login-function-to-a-button)
-  - [3. Use the `identity` context variable to access the identity](#3-use-the-identity-context-variable-to-access-the-identity)
+  - [2. Setting up the backend actor with `ic-use-actor`](#2-setting-up-the-backend-actor-with-ic-use-actor)
+  - [3. Connect the `login()` function to a button](#3-connect-the-login-function-to-a-button)
+  - [4. Use the `identity` to access authenticated features](#4-use-the-identity-to-access-authenticated-features)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -37,7 +39,7 @@ This app consists of two main components:
 
 ### Backend
 
-The backend is a Rust based canister that, for demonstration purposes, implements some basic functionality - a counter and a function that returns the user's identity.
+The backend is a Rust-based canister that, for demonstration purposes, implements some basic functionality - a counter and a function that returns the user's identity.
 
 [/src/backend/src/lib.rs](/src/backend/src/lib.rs)
 
@@ -58,14 +60,14 @@ dfx deploy
 ## `ic-use-internet-identity` Features
 
 - **Cached Identity**: The identity is cached in local storage and restored on page load. This allows the user to stay logged in even if the page is refreshed.
-- **Login progress**: State varibles are provided to indicate whether the user is logged in, logging in, or logged out.
+- **Login progress**: State variables are provided to indicate whether the user is logged in, logging in, or logged out.
 - **Works with ic-use-actor**: Plays nicely with [ic-use-actor](https://www.npmjs.com/package/ic-use-actor) that provides easy access to canister methods.
 
-## Details
+## Implementation Details
 
 ### 1. The `InternetIdentityProvider` component
 
-The application's root component is wrapped with `InternetIdentityProvider` to provide all child components access to the identity context.
+The application's root component is wrapped with `InternetIdentityProvider` to provide all child components access to the identity context. The provider accepts `loginOptions` to configure the Internet Identity provider URL based on the environment.
 
 ```jsx
 // main.tsx
@@ -76,75 +78,155 @@ import ReactDOM from "react-dom/client";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <InternetIdentityProvider>
+    <InternetIdentityProvider loginOptions={{
+      identityProvider: process.env.DFX_NETWORK === "local"
+        ? `http://${process.env.CANISTER_ID_INTERNET_IDENTITY}.localhost:4943`
+        : "https://identity.ic0.app"
+    }}>
       <App />
     </InternetIdentityProvider>
   </React.StrictMode>
 );
 ```
 
-### 2. Connect the `login()` function to a button
+### 2. Setting up the backend actor with `ic-use-actor`
 
-Calling `login()` opens up the Internet Identity service in a new window where the user is asked to sign in. Once signed in, the window closes and the identity is stored in local storage. The identity is then available in the `identity` context variable.
+The demo uses `ic-use-actor`'s `createActorHook` to create a custom hook for interacting with the backend canister. This approach provides a typed interface and supports interceptors for handling requests and responses.
 
-Use the `loginStatus` state variable to track the status of the login process. The `loginStatus` can be one of the following values: `idle`, `logging-in`, `success`, or `error`.
+```jsx
+// Backend.tsx
+
+import { createActorHook } from "ic-use-actor";
+import { canisterId, idlFactory } from "../../../declarations/backend/index";
+import { _SERVICE } from "../../../declarations/backend/backend.did";
+import { useInternetIdentity } from "ic-use-internet-identity";
+
+export const useBackend = createActorHook<_SERVICE>({
+  canisterId,
+  idlFactory,
+});
+
+export default function Backend() {
+  const { identity, clear } = useInternetIdentity();
+  const { authenticate, setInterceptors } = useBackend();
+
+  // Set up interceptors for logging and error handling
+  useEffect(() => {
+    setInterceptors({
+      onRequest: handleRequest,
+      onResponse: handleResponse,
+      onRequestError: handleRequestError,
+      onResponseError: handleResponseError,
+    })
+  }, [])
+
+  // Authenticate the actor with the identity
+  useEffect(() => {
+    if (!identity) return;
+    authenticate(identity);
+  }, [identity, authenticate])
+
+  return null;
+}
+```
+
+The Backend component also includes delegation validation to check if the login has expired:
+
+```jsx
+const handleRequest = (data: InterceptorRequestData) => {
+  if (!isDelegationValid((identity as DelegationIdentity).getDelegation())) {
+    toast.error("Login expired.", {
+      id: "login-expired",
+      position: "bottom-right",
+    });
+    setTimeout(() => {
+      clear(); // Clears the identity from the state and local storage
+      window.location.reload(); // Reloads the page to reset the UI
+    }, 1000);
+  }
+  return data.args;
+};
+```
+
+### 3. Connect the `login()` function to a button
+
+The `LoginButton` component handles both login and logout functionality. It uses the `isLoggingIn` state to show loading status and toggles between login/logout based on whether an identity exists.
 
 ```jsx
 // LoginButton.tsx
 
 import { useInternetIdentity } from "ic-use-internet-identity";
+import { useBackend } from "../ic/Backend";
 
 export function LoginButton() {
-  const { login, loginStatus } = useInternetIdentity();
+  const { isLoggingIn, login, clear: clearIdentity, identity } = useInternetIdentity();
+  const { reset: resetBackend } = useBackend();
 
-  const disabled = loginStatus === "logging-in" || loginStatus === "success";
-  const text = loginStatus === "logging-in" ? "Logging in..." : "Login";
+  function handleClick() {
+    if (identity) {
+      clearIdentity();  // Clear the identity
+      resetBackend();    // Reset the backend actor
+    } else {
+      login();          // Open Internet Identity login
+    }
+  }
+
+  const text = () => {
+    if (identity) {
+      return "Logout";
+    } else if (isLoggingIn) {
+      return "Logging in...";
+    }
+    return "Login";
+  };
 
   return (
-    <button onClick={login} disabled={disabled}>
-      {text}
+    <button onClick={handleClick} disabled={isLoggingIn}>
+      {text()}
     </button>
   );
 }
 ```
 
-### 3. Use the `identity` context variable to access the identity
+### 4. Use the `identity` to access authenticated features
 
-The `identity` context variable contains the identity of the currently logged in user. The identity is available after successfully loading the identity from local storage or completing the login process.
-
-The preferred way to use the identity is to connect it to the [ic-use-actor](https://www.npmjs.com/kristoferlund/ic-use-actor) hook. The hook provides a typed interface to the canister methods as well as interceptor functions for handling errors etc.
+Once logged in, the identity is available throughout the application. Components can use it to conditionally render authenticated content and make authenticated calls to the backend canister.
 
 ```jsx
-// Actors.tsx
+// Counter.tsx
 
-import { ReactNode } from "react";
-import {
-  ActorProvider,
-  createActorContext,
-  createUseActorHook,
-} from "ic-use-actor";
-import {
-  canisterId,
-  idlFactory,
-} from "path-to/your-service/index";
-import { _SERVICE } from "path-to/your-service.did";
 import { useInternetIdentity } from "ic-use-internet-identity";
+import { useBackend } from "../ic/Backend";
 
-const actorContext = createActorContext<_SERVICE>();
-export const useActor = createUseActorHook<_SERVICE>(actorContext);
-
-export default function Actors({ children }: { children: ReactNode }) {
+export function Counter() {
+  const { actor: backend } = useBackend();
   const { identity } = useInternetIdentity();
+  const [counter, setCounter] = useState<number>();
+
+  // Get counter value from backend
+  useEffect(() => {
+    if (!backend) return;
+    backend.get_counter().then((c) => {
+      setCounter(c);
+    });
+  }, [backend]);
+
+  // Only render if user is logged in
+  if (!identity) return null;
+
+  // Make authenticated calls to the backend
+  function handleClick() {
+    if (!backend) return;
+    backend.inc_counter().then((c) => {
+      setCounter(c);
+    });
+  }
 
   return (
-    <ActorProvider<_SERVICE>
-      canisterId={canisterId}
-      context={actorContext}
-      identity={identity}
-      idlFactory={idlFactory}
-    >
-      {children}
-    </ActorProvider>
+    <div>
+      Counter: {counter}
+      <button onClick={handleClick}>+</button>
+    </div>
   );
 }
 ```
