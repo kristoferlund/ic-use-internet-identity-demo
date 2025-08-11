@@ -24,8 +24,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0
       ic-use-actor:
-        specifier: ^0.2.0-beta.1
-        version: 0.2.0-beta.1(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(react@18.3.1)
+        specifier: ^0.2.0
+        version: 0.2.0(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(react@18.3.1)
       ic-use-internet-identity:
         specifier: ^0.4.0
         version: 0.4.0(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.1.0(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/identity@3.1.0(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/curves@1.9.6)(@noble/hashes@1.8.0))(@dfinity/principal@3.1.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/identity@3.1.0(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/curves@1.9.6)(@noble/hashes@1.8.0))(@dfinity/principal@3.1.0)(react@18.3.1)
@@ -1152,8 +1152,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  ic-use-actor@0.2.0-beta.1:
-    resolution: {integrity: sha512-T7xEJ+IV93D8XcCBQkztlBFcXv0uALypRmGc1WwvG/EZlUX3u4j0eH5+UW8HC7LA2O/gEIs9zSmWNirGVEu2tw==}
+  ic-use-actor@0.2.0:
+    resolution: {integrity: sha512-ucfOPk7d2m8s8tTC3galHWcT8iiKIiajks397en4bYXOXjoH2CzettvJvbMlNvfBJPHbZ4trQibMF1/jeNp7uQ==}
     peerDependencies:
       '@dfinity/agent': '>=3.1.0'
       '@dfinity/candid': '>=3.1.0'
@@ -3190,7 +3190,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  ic-use-actor@0.2.0-beta.1(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(react@18.3.1):
+  ic-use-actor@0.2.0(@dfinity/agent@3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0))(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(react@18.3.1):
     dependencies:
       '@dfinity/agent': 3.1.0(@dfinity/candid@3.1.0(@dfinity/principal@3.1.0))(@dfinity/principal@3.1.0)(@noble/hashes@1.8.0)
       '@dfinity/candid': 3.1.0(@dfinity/principal@3.1.0)
