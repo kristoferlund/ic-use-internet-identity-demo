@@ -5,7 +5,17 @@ import { InternetIdentityProvider } from "ic-use-internet-identity";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
-import Backend from "./ic/Backend.tsx";
+import {
+  createActorHook,
+} from "ic-use-actor";
+import { canisterId, idlFactory } from "../../declarations/backend/index";
+import { _SERVICE } from "../../declarations/backend/backend.did";
+import AuthGuard from "./components/AuthGuard.tsx";
+
+export const useBackend = createActorHook<_SERVICE>({
+  canisterId,
+  idlFactory,
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -14,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         ? `http://${process.env.CANISTER_ID_INTERNET_IDENTITY}.localhost:4943`
         : "https://identity.ic0.app"
     }}>
-      <Backend />
+      <AuthGuard />
       <App />
       <Toaster
         position="bottom-right"

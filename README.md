@@ -91,60 +91,86 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ### 2. Setting up the backend actor with `ic-use-actor`
 
-The demo uses `ic-use-actor`'s `createActorHook` to create a custom hook for interacting with the backend canister. This approach provides a typed interface and supports interceptors for handling requests and responses.
+The demo uses `ic-use-actor`'s `createActorHook` to create a custom hook for interacting with the backend canister. This approach provides a typed interface and supports interceptors for handling requests and responses. The hook is created in `main.tsx` and used in the `AuthGuard` component.
 
 ```jsx
-// Backend.tsx
+// main.tsx
 
-import { createActorHook } from "ic-use-actor";
-import { canisterId, idlFactory } from "../../../declarations/backend/index";
-import { _SERVICE } from "../../../declarations/backend/backend.did";
-import { useInternetIdentity } from "ic-use-internet-identity";
+import {
+  createActorHook,
+} from "ic-use-actor";
+import { canisterId, idlFactory } from "../../declarations/backend/index";
+import { _SERVICE } from "../../declarations/backend/backend.did";
 
 export const useBackend = createActorHook<_SERVICE>({
   canisterId,
   idlFactory,
 });
+```
 
-export default function Backend() {
-  const { identity, clear } = useInternetIdentity();
-  const { authenticate, setInterceptors } = useBackend();
+The `AuthGuard` component serves two main purposes: it demonstrates how to set up interceptors for logging and error handling on canister requests, and it authenticates the backend actor hook once an identity becomes available.
+
+```jsx
+// components/AuthGuard.tsx
+
+import {
+  InterceptorErrorData,
+  InterceptorRequestData,
+  InterceptorResponseData,
+} from "ic-use-actor";
+import { useEffect, useRef } from "react";
+import { _SERVICE } from "../../../declarations/backend/backend.did";
+import { useInternetIdentity } from "ic-use-internet-identity";
+import { useBackend } from "../main";
+
+export default function AuthGuard() {
+  const { identity } = useInternetIdentity();
+  const { authenticate, setInterceptors, actor } = useBackend();
+  const interceptorsSet = useRef(false);
 
   // Set up interceptors for logging and error handling
   useEffect(() => {
+    if (!actor || interceptorsSet.current) return;
     setInterceptors({
       onRequest: handleRequest,
       onResponse: handleResponse,
       onRequestError: handleRequestError,
       onResponseError: handleResponseError,
-    })
-  }, [])
+    });
+    interceptorsSet.current = true;
+  }, [actor]);
 
   // Authenticate the actor with the identity
   useEffect(() => {
     if (!identity) return;
     authenticate(identity);
-  }, [identity, authenticate])
+  }, [identity, authenticate]);
 
   return null;
 }
 ```
 
-The Backend component also includes delegation validation to check if the login has expired:
+The interceptors are used for logging requests and responses:
 
 ```jsx
 const handleRequest = (data: InterceptorRequestData) => {
-  if (!isDelegationValid((identity as DelegationIdentity).getDelegation())) {
-    toast.error("Login expired.", {
-      id: "login-expired",
-      position: "bottom-right",
-    });
-    setTimeout(() => {
-      clear(); // Clears the identity from the state and local storage
-      window.location.reload(); // Reloads the page to reset the UI
-    }, 1000);
-  }
+  console.log("onRequest", data.args, data.methodName);
   return data.args;
+};
+
+const handleResponse = (data: InterceptorResponseData) => {
+  console.log("onResponse", data.args, data.methodName, data.response);
+  return data.response;
+};
+
+const handleRequestError = (data: InterceptorErrorData) => {
+  console.log("onRequestError", data.args, data.methodName, data.error);
+  return data.error;
+};
+
+const handleResponseError = (data: InterceptorErrorData) => {
+  console.log("onResponseError", data.args, data.methodName, data.error);
+  return data.error;
 };
 ```
 
@@ -156,7 +182,7 @@ The `LoginButton` component handles both login and logout functionality. It uses
 // LoginButton.tsx
 
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { useBackend } from "../ic/Backend";
+import { useBackend } from "../main";
 
 export function LoginButton() {
   const { isLoggingIn, login, clear: clearIdentity, identity } = useInternetIdentity();
@@ -196,7 +222,7 @@ Once logged in, the identity is available throughout the application. Components
 // Counter.tsx
 
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { useBackend } from "../ic/Backend";
+import { useBackend } from "../main";
 
 export function Counter() {
   const { actor: backend } = useBackend();

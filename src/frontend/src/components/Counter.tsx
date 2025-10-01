@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Spinner from "./Spinner";
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { useBackend } from "../ic/Backend";
+import { useBackend } from "../main";
 
 export function Counter() {
   const { actor: backend } = useBackend();
