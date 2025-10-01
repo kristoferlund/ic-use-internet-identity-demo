@@ -108,6 +108,8 @@ export const useBackend = createActorHook<_SERVICE>({
 });
 ```
 
+The `AuthGuard` component serves two main purposes: it demonstrates how to set up interceptors for logging and error handling on canister requests, and it authenticates the backend actor hook once an identity becomes available.
+
 ```jsx
 // components/AuthGuard.tsx
 
@@ -118,13 +120,11 @@ import {
 } from "ic-use-actor";
 import { useEffect, useRef } from "react";
 import { _SERVICE } from "../../../declarations/backend/backend.did";
-import toast from "react-hot-toast";
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { DelegationIdentity, isDelegationValid } from "@dfinity/identity";
 import { useBackend } from "../main";
 
 export default function AuthGuard() {
-  const { identity, clear } = useInternetIdentity();
+  const { identity } = useInternetIdentity();
   const { authenticate, setInterceptors, actor } = useBackend();
   const interceptorsSet = useRef(false);
 
@@ -150,21 +150,27 @@ export default function AuthGuard() {
 }
 ```
 
-The AuthGuard component also includes delegation validation to check if the login has expired:
+The interceptors are used for logging requests and responses:
 
 ```jsx
 const handleRequest = (data: InterceptorRequestData) => {
-  if (identity instanceof DelegationIdentity && !isDelegationValid(identity.getDelegation())) {
-    toast.error("Login expired.", {
-      id: "login-expired",
-      position: "bottom-right",
-    });
-    setTimeout(() => {
-      clear(); // Clears the identity from the state and local storage
-      window.location.reload(); // Reloads the page to reset the UI
-    }, 1000);
-  }
+  console.log("onRequest", data.args, data.methodName);
   return data.args;
+};
+
+const handleResponse = (data: InterceptorResponseData) => {
+  console.log("onResponse", data.args, data.methodName, data.response);
+  return data.response;
+};
+
+const handleRequestError = (data: InterceptorErrorData) => {
+  console.log("onRequestError", data.args, data.methodName, data.error);
+  return data.error;
+};
+
+const handleResponseError = (data: InterceptorErrorData) => {
+  console.log("onResponseError", data.args, data.methodName, data.error);
+  return data.error;
 };
 ```
 
