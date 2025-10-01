@@ -1,7 +1,7 @@
 import Spinner from "./Spinner";
 import { twMerge } from "tailwind-merge";
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { useBackend } from "../ic/Backend";
+import { useBackend } from "../main";
 
 export function LoginButton() {
   const { isLoggingIn, login, clear: clearIdentity, identity } = useInternetIdentity();
