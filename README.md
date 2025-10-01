@@ -91,50 +91,70 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ### 2. Setting up the backend actor with `ic-use-actor`
 
-The demo uses `ic-use-actor`'s `createActorHook` to create a custom hook for interacting with the backend canister. This approach provides a typed interface and supports interceptors for handling requests and responses.
+The demo uses `ic-use-actor`'s `createActorHook` to create a custom hook for interacting with the backend canister. This approach provides a typed interface and supports interceptors for handling requests and responses. The hook is created in `main.tsx` and used in the `AuthGuard` component.
 
 ```jsx
-// Backend.tsx
+// main.tsx
 
-import { createActorHook } from "ic-use-actor";
-import { canisterId, idlFactory } from "../../../declarations/backend/index";
-import { _SERVICE } from "../../../declarations/backend/backend.did";
-import { useInternetIdentity } from "ic-use-internet-identity";
+import {
+  createActorHook,
+} from "ic-use-actor";
+import { canisterId, idlFactory } from "../../declarations/backend/index";
+import { _SERVICE } from "../../declarations/backend/backend.did";
 
 export const useBackend = createActorHook<_SERVICE>({
   canisterId,
   idlFactory,
 });
+```
 
-export default function Backend() {
+```jsx
+// components/AuthGuard.tsx
+
+import {
+  InterceptorErrorData,
+  InterceptorRequestData,
+  InterceptorResponseData,
+} from "ic-use-actor";
+import { useEffect, useRef } from "react";
+import { _SERVICE } from "../../../declarations/backend/backend.did";
+import toast from "react-hot-toast";
+import { useInternetIdentity } from "ic-use-internet-identity";
+import { DelegationIdentity, isDelegationValid } from "@dfinity/identity";
+import { useBackend } from "../main";
+
+export default function AuthGuard() {
   const { identity, clear } = useInternetIdentity();
-  const { authenticate, setInterceptors } = useBackend();
+  const { authenticate, setInterceptors, actor } = useBackend();
+  const interceptorsSet = useRef(false);
 
   // Set up interceptors for logging and error handling
   useEffect(() => {
+    if (!actor || interceptorsSet.current) return;
     setInterceptors({
       onRequest: handleRequest,
       onResponse: handleResponse,
       onRequestError: handleRequestError,
       onResponseError: handleResponseError,
-    })
-  }, [])
+    });
+    interceptorsSet.current = true;
+  }, [actor]);
 
   // Authenticate the actor with the identity
   useEffect(() => {
     if (!identity) return;
     authenticate(identity);
-  }, [identity, authenticate])
+  }, [identity, authenticate]);
 
   return null;
 }
 ```
 
-The Backend component also includes delegation validation to check if the login has expired:
+The AuthGuard component also includes delegation validation to check if the login has expired:
 
 ```jsx
 const handleRequest = (data: InterceptorRequestData) => {
-  if (!isDelegationValid((identity as DelegationIdentity).getDelegation())) {
+  if (identity instanceof DelegationIdentity && !isDelegationValid(identity.getDelegation())) {
     toast.error("Login expired.", {
       id: "login-expired",
       position: "bottom-right",
@@ -156,7 +176,7 @@ The `LoginButton` component handles both login and logout functionality. It uses
 // LoginButton.tsx
 
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { useBackend } from "../ic/Backend";
+import { useBackend } from "../main";
 
 export function LoginButton() {
   const { isLoggingIn, login, clear: clearIdentity, identity } = useInternetIdentity();
@@ -196,7 +216,7 @@ Once logged in, the identity is available throughout the application. Components
 // Counter.tsx
 
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { useBackend } from "../ic/Backend";
+import { useBackend } from "../main";
 
 export function Counter() {
   const { actor: backend } = useBackend();

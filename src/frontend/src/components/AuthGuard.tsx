@@ -5,9 +5,7 @@ import {
 } from "ic-use-actor";
 import { useEffect, useRef } from "react";
 import { _SERVICE } from "../../../declarations/backend/backend.did";
-import toast from "react-hot-toast";
 import { useInternetIdentity } from "ic-use-internet-identity";
-import { DelegationIdentity, isDelegationValid } from "@dfinity/identity";
 import { useBackend } from "../main";
 
 
@@ -18,16 +16,6 @@ export default function AuthGuard() {
 
   const handleRequest = (data: InterceptorRequestData) => {
     console.log("onRequest", data.args, data.methodName);
-    if (identity instanceof DelegationIdentity && !isDelegationValid(identity.getDelegation())) {
-      toast.error("Login expired.", {
-        id: "login-expired",
-        position: "bottom-right",
-      });
-      setTimeout(() => {
-        clear(); // Clears the identity from the state and local storage. Effectively "logs the user out".
-        window.location.reload(); // Reloads the page to reset the UI.
-      }, 1000);
-    }
     return data.args;
   };
 
