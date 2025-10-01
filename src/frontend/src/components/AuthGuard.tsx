@@ -10,7 +10,7 @@ import { useBackend } from "../main";
 
 
 export default function AuthGuard() {
-  const { identity, clear } = useInternetIdentity();
+  const { identity } = useInternetIdentity();
   const { authenticate, setInterceptors, actor } = useBackend();
   const interceptorsSet = useRef(false);
 
