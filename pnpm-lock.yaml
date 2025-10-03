@@ -24,11 +24,11 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7
       ic-use-actor:
-        specifier: file:../ic-use-actor
-        version: file:../ic-use-actor(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(react@18.3.1)
+        specifier: ^0.3.0
+        version: 0.3.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(react@18.3.1)
       ic-use-internet-identity:
-        specifier: file:../ic-use-internet-identity
-        version: file:../ic-use-internet-identity(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(react@18.3.1)
+        specifier: ^0.6.1
+        version: 0.6.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1165,15 +1165,15 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  ic-use-actor@file:../ic-use-actor:
-    resolution: {directory: ../ic-use-actor, type: directory}
+  ic-use-actor@0.3.1:
+    resolution: {integrity: sha512-rgKAchYCMlxtDPFWC3uhzquvG/2kbdnNXLX4gswcfO1fNk3jK10IEe4WBNxQl/Z0FxFKK3cEjcI/Q2muUH3wpQ==}
     peerDependencies:
       '@dfinity/agent': ^3
       '@dfinity/candid': ^3
       react: '>=18.0.0'
 
-  ic-use-internet-identity@file:../ic-use-internet-identity:
-    resolution: {directory: ../ic-use-internet-identity, type: directory}
+  ic-use-internet-identity@0.6.1:
+    resolution: {integrity: sha512-kmmYPVKAZsv/lISOlcLilabXKalAtdBKdLK0cFP027MyJmRDodc3PU04DqyT4iVQANXAvTZ3irtQkfEUIwGgww==}
     peerDependencies:
       '@dfinity/agent': ^3
       '@dfinity/auth-client': ^3
@@ -3200,7 +3200,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  ic-use-actor@file:../ic-use-actor(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(react@18.3.1):
+  ic-use-actor@0.3.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(react@18.3.1):
     dependencies:
       '@dfinity/agent': 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
       '@dfinity/candid': 3.2.7(@dfinity/principal@3.2.7)
@@ -3209,7 +3209,7 @@ snapshots:
     transitivePeerDependencies:
       - solid-js
 
-  ic-use-internet-identity@file:../ic-use-internet-identity(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(react@18.3.1):
+  ic-use-internet-identity@0.6.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(react@18.3.1):
     dependencies:
       '@dfinity/agent': 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
       '@dfinity/auth-client': 3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7)
