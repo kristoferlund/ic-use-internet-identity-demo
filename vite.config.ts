@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { icpBindgen } from '@icp-sdk/bindgen/plugins/vite';
 
 dotenv.config();
 
@@ -12,7 +12,13 @@ const processEnvCanisterIds = Object.fromEntries(
 );
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    icpBindgen({
+      didFile: './src/backend/backend.did',
+      outDir: './src/frontend/src/',
+    }),
+  ],
   root: "src/frontend",
   build: {
     target: "es2020",
@@ -25,7 +31,6 @@ export default defineConfig({
       "/api": {
         target: `http://127.0.0.1:4943`,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "/api"),
       },
     },
   },

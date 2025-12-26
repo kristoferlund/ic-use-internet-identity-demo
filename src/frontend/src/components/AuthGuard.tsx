@@ -4,7 +4,6 @@ import {
   InterceptorResponseData,
 } from "ic-use-actor";
 import { useEffect, useRef } from "react";
-import { _SERVICE } from "../../../declarations/backend/backend.did";
 import { useInternetIdentity } from "ic-use-internet-identity";
 import { useBackend } from "../main";
 

@@ -8,27 +8,18 @@ importers:
 
   .:
     dependencies:
-      '@dfinity/agent':
-        specifier: ^3.2.7
-        version: 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
-      '@dfinity/auth-client':
-        specifier: ^3.2.7
-        version: 3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7)
-      '@dfinity/candid':
-        specifier: ^3.2.7
-        version: 3.2.7(@dfinity/principal@3.2.7)
-      '@dfinity/identity':
-        specifier: ^3.2.7
-        version: 3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0)
-      '@dfinity/principal':
-        specifier: ^3.2.7
-        version: 3.2.7
+      '@icp-sdk/auth':
+        specifier: ^5
+        version: 5.0.0(@icp-sdk/core@5.0.0)
+      '@icp-sdk/core':
+        specifier: ^5
+        version: 5.0.0
       ic-use-actor:
-        specifier: ^0.3.0
-        version: 0.3.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(react@18.3.1)
+        specifier: ^0.4.0
+        version: 0.4.0(@icp-sdk/core@5.0.0)(react@18.3.1)
       ic-use-internet-identity:
-        specifier: ^0.6.1
-        version: 0.6.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(react@18.3.1)
+        specifier: ^0.7.0
+        version: 0.7.0(@icp-sdk/auth@5.0.0(@icp-sdk/core@5.0.0))(@icp-sdk/core@5.0.0)(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -42,6 +33,9 @@ importers:
         specifier: ^2.0.0
         version: 2.6.0
     devDependencies:
+      '@icp-sdk/bindgen':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@types/node':
         specifier: ^22.7.5
         version: 22.18.8
@@ -183,39 +177,8 @@ packages:
     resolution: {integrity: sha512-bkFqkLhh3pMBUQQkpVgWDWq/lqzc2678eUyDlTBhRqhCHFguYYGM0Efga7tYk4TogG/3x0EEl66/OQ+WGbWB/Q==}
     engines: {node: '>=6.9.0'}
 
-  '@dfinity/agent@3.2.7':
-    resolution: {integrity: sha512-JO8GrhHcTialLeBfEEEruZPaA+4Ipt3mYqlM5CYKO7aWUCGPn94yxDVZ4nRJA8SRJjq+IXEBYpfGqbNOe5Djbg==}
-    peerDependencies:
-      '@dfinity/candid': 3.2.7
-      '@dfinity/principal': 3.2.7
-      '@noble/hashes': ^1.8.0
-
-  '@dfinity/auth-client@3.2.7':
-    resolution: {integrity: sha512-TtUhdqcQ95YPjUpCmuwwdWMGH0ZFK2JMJCrbsK4qBP0l2EjFo5iJ7+P/KrqHQti2WkRxKZYaj/+Ud7Uiqz9gug==}
-    peerDependencies:
-      '@dfinity/agent': 3.2.7
-      '@dfinity/identity': 3.2.7
-      '@dfinity/principal': 3.2.7
-
-  '@dfinity/candid@3.2.7':
-    resolution: {integrity: sha512-Sad081UnB0DWI6pB+F1pOwcarqdhD0XVfuqw8MRzP0PuSCHlr7CKK5QZ6HE/Hq+ABDjn5vPG4WkbZs1sdma/Iw==}
-    peerDependencies:
-      '@dfinity/principal': 3.2.7
-
   '@dfinity/cbor@0.2.2':
     resolution: {integrity: sha512-GPJpH73kDEKbUBdUjY80lz7cq9l0vm1h/7ppejPV6O0ZTqCLrYspssYvqjRmK4aNnJ/SKXsP0rg9LYX7zpegaA==}
-
-  '@dfinity/identity@3.2.7':
-    resolution: {integrity: sha512-m2QhnS/OYKb+rBmfgrdHVpQpu8duKEgiy6kq9gyRoXkCbucYdaJnj2FCLXpeMSWMh3u2VRqNA4/RatLiOLntjw==}
-    peerDependencies:
-      '@dfinity/agent': 3.2.7
-      '@dfinity/candid': 3.2.7
-      '@dfinity/principal': 3.2.7
-      '@noble/curves': ^1.9.2
-      '@noble/hashes': ^1.8.0
-
-  '@dfinity/principal@3.2.7':
-    resolution: {integrity: sha512-R67oKAac90vD/KBVCMXcFCloWVU2Y3cDDyaja66i5JFxSt5Em+0M5CZrVZjn1LE7EcrMgsvQcqiV2S0Rnaw7Zg==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -386,6 +349,18 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
+  '@icp-sdk/auth@5.0.0':
+    resolution: {integrity: sha512-TaPfdaELT7s0vTIFOmCnlCmhPdL7kABA7+2Q0YNAUWIa/FFiwq6ffGPLvr0U0+2zFLaLQ4l7UCB2zf7vo6PFPQ==}
+    peerDependencies:
+      '@icp-sdk/core': ^5
+
+  '@icp-sdk/bindgen@0.2.1':
+    resolution: {integrity: sha512-/YXJcYdqb4Qi+c33NVU8BgY4O/ZVqOQy+eYH4fSu5asT5/eAQl5NNgsjMTkhbGknRbxm8N9/ZopzAf2GX0n5lg==}
+    hasBin: true
+
+  '@icp-sdk/core@5.0.0':
+    resolution: {integrity: sha512-t6iRbdylHG57MicWRpR1uMTFXRW7GCzec6KAg55CBwDHbHLQDKikQ252lmlcEa80DrKa3LPvMKYZEUYjEq5XUQ==}
+
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -542,6 +517,15 @@ packages:
     resolution: {integrity: sha512-zGIbEVVXVtauFgl3MRwGWEN36P5ZGenHRMgNw88X5wEhEBpq0XrMEZwOn07+ICrwM17XO5xfMZqh0OldCH5VTA==}
     cpu: [x64]
     os: [win32]
+
+  '@scure/base@1.2.6':
+    resolution: {integrity: sha512-g/nm5FgUa//MCj1gV09zTJTaM6KBAHqLN907YVQqf7zC49+DcO4B1so4ZX07Ef10Twr6nuqYEH9GEggFXA4Fmg==}
+
+  '@scure/bip32@1.7.0':
+    resolution: {integrity: sha512-E4FFX/N3f4B80AKWp5dP6ow+flD1LQZo/w8UnLGYZO674jS6YnYeepycOOksv+vLPSpgN35wgKgy+ybfTb2SMw==}
+
+  '@scure/bip39@1.6.0':
+    resolution: {integrity: sha512-+lF0BbLiJNwVlev4eKelw1WWLaiKXw7sSl8T6FvBlWkdX+94aGJ4o8XjUdlyhTCjd8c+B3KT3JfS8P0bLRNU6A==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -733,6 +717,10 @@ packages:
     resolution: {integrity: sha512-BNoCY6SXXPQ7gF2opIP4GBE+Xw7U+pHMYKuzjgCN3GwiaIR09UUeKfheyIry77QtrCBlC0KK0q5/TER/tYh3PQ==}
     engines: {node: '>= 0.4'}
 
+  asn1js@3.0.7:
+    resolution: {integrity: sha512-uLvq6KJu04qoQM6gvBfKFjlh6Gl0vOKQuR5cJMDHQkmwfMOQeN3F3SHCv9SNYSL+CRoHvOGFfllDlVz03GQjvQ==}
+    engines: {node: '>=12.0.0'}
+
   async-function@1.0.0:
     resolution: {integrity: sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==}
     engines: {node: '>= 0.4'}
@@ -815,6 +803,10 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  commander@14.0.2:
+    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
+    engines: {node: '>=20'}
 
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -1165,19 +1157,17 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  ic-use-actor@0.3.1:
-    resolution: {integrity: sha512-rgKAchYCMlxtDPFWC3uhzquvG/2kbdnNXLX4gswcfO1fNk3jK10IEe4WBNxQl/Z0FxFKK3cEjcI/Q2muUH3wpQ==}
+  ic-use-actor@0.4.0:
+    resolution: {integrity: sha512-rVjQ/MUlkxTbTE/BR0uMvuAQQcpUlQytHStBwJytrnoWe5mIYiXXGczyn7oLY17NwVkdWRcVb+KcLzqAEqekSA==}
     peerDependencies:
-      '@dfinity/agent': ^3
-      '@dfinity/candid': ^3
+      '@icp-sdk/core': ^5.0.0
       react: '>=18.0.0'
 
-  ic-use-internet-identity@0.6.1:
-    resolution: {integrity: sha512-kmmYPVKAZsv/lISOlcLilabXKalAtdBKdLK0cFP027MyJmRDodc3PU04DqyT4iVQANXAvTZ3irtQkfEUIwGgww==}
+  ic-use-internet-identity@0.7.0:
+    resolution: {integrity: sha512-iPsrsWMDVQLnx75iFvMLs/pgiYqUUmNinYaNUHEOj040fTKLk4lSadmAN0sCq1XdVCvgq5niBUxe12OFXmnwSA==}
     peerDependencies:
-      '@dfinity/agent': ^3
-      '@dfinity/auth-client': ^3
-      '@dfinity/identity': ^3
+      '@icp-sdk/auth': ^5
+      '@icp-sdk/core': ^5
       react: '>=18.0.0'
 
   idb@7.1.1:
@@ -1634,6 +1624,13 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
+  pvtsutils@1.3.6:
+    resolution: {integrity: sha512-PLgQXQ6H2FWCaeRak8vvk1GW462lMxB5s3Jm673N82zI4vqtVUPuZdffdZbPDFRoU8kAhItWFtPCWiPpp4/EDg==}
+
+  pvutils@1.1.5:
+    resolution: {integrity: sha512-KTqnxsgGiQ6ZAzZCVlJH5eOjSnvlyEgx1m8bkRJfOhmGRqfo5KLvmAlACQkrjEtOQ4B7wF9TdSLIs9O90MX9xA==}
+    engines: {node: '>=16.0.0'}
+
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
@@ -1871,6 +1868,9 @@ packages:
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+
+  tslib@2.8.1:
+    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -2119,38 +2119,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)':
-    dependencies:
-      '@dfinity/candid': 3.2.7(@dfinity/principal@3.2.7)
-      '@dfinity/cbor': 0.2.2
-      '@dfinity/principal': 3.2.7
-      '@noble/curves': 1.9.7
-      '@noble/hashes': 1.8.0
-
-  '@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7)':
-    dependencies:
-      '@dfinity/agent': 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
-      '@dfinity/identity': 3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0)
-      '@dfinity/principal': 3.2.7
-      idb: 7.1.1
-
-  '@dfinity/candid@3.2.7(@dfinity/principal@3.2.7)':
-    dependencies:
-      '@dfinity/principal': 3.2.7
-
   '@dfinity/cbor@0.2.2': {}
-
-  '@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0)':
-    dependencies:
-      '@dfinity/agent': 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
-      '@dfinity/candid': 3.2.7(@dfinity/principal@3.2.7)
-      '@dfinity/principal': 3.2.7
-      '@noble/curves': 1.9.7
-      '@noble/hashes': 1.8.0
-
-  '@dfinity/principal@3.2.7':
-    dependencies:
-      '@noble/hashes': 1.8.0
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
@@ -2255,6 +2224,24 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@icp-sdk/auth@5.0.0(@icp-sdk/core@5.0.0)':
+    dependencies:
+      '@icp-sdk/core': 5.0.0
+      idb: 7.1.1
+
+  '@icp-sdk/bindgen@0.2.1':
+    dependencies:
+      commander: 14.0.2
+
+  '@icp-sdk/core@5.0.0':
+    dependencies:
+      '@dfinity/cbor': 0.2.2
+      '@noble/curves': 1.9.7
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      asn1js: 3.0.7
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -2372,6 +2359,19 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.52.3':
     optional: true
+
+  '@scure/base@1.2.6': {}
+
+  '@scure/bip32@1.7.0':
+    dependencies:
+      '@noble/curves': 1.9.7
+      '@noble/hashes': 1.8.0
+      '@scure/base': 1.2.6
+
+  '@scure/bip39@1.6.0':
+    dependencies:
+      '@noble/hashes': 1.8.0
+      '@scure/base': 1.2.6
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -2614,6 +2614,12 @@ snapshots:
       get-intrinsic: 1.3.0
       is-array-buffer: 3.0.5
 
+  asn1js@3.0.7:
+    dependencies:
+      pvtsutils: 1.3.6
+      pvutils: 1.1.5
+      tslib: 2.8.1
+
   async-function@1.0.0: {}
 
   autoprefixer@10.4.21(postcss@8.5.6):
@@ -2704,6 +2710,8 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
+
+  commander@14.0.2: {}
 
   commander@4.1.1: {}
 
@@ -3200,20 +3208,18 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  ic-use-actor@0.3.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(react@18.3.1):
+  ic-use-actor@0.4.0(@icp-sdk/core@5.0.0)(react@18.3.1):
     dependencies:
-      '@dfinity/agent': 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
-      '@dfinity/candid': 3.2.7(@dfinity/principal@3.2.7)
+      '@icp-sdk/core': 5.0.0
       '@xstate/store': 3.9.2(react@18.3.1)
       react: 18.3.1
     transitivePeerDependencies:
       - solid-js
 
-  ic-use-internet-identity@0.6.1(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/auth-client@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(react@18.3.1):
+  ic-use-internet-identity@0.7.0(@icp-sdk/auth@5.0.0(@icp-sdk/core@5.0.0))(@icp-sdk/core@5.0.0)(react@18.3.1):
     dependencies:
-      '@dfinity/agent': 3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0)
-      '@dfinity/auth-client': 3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/identity@3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0))(@dfinity/principal@3.2.7)
-      '@dfinity/identity': 3.2.7(@dfinity/agent@3.2.7(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/hashes@1.8.0))(@dfinity/candid@3.2.7(@dfinity/principal@3.2.7))(@dfinity/principal@3.2.7)(@noble/curves@1.9.7)(@noble/hashes@1.8.0)
+      '@icp-sdk/auth': 5.0.0(@icp-sdk/core@5.0.0)
+      '@icp-sdk/core': 5.0.0
       '@xstate/store': 3.9.2(react@18.3.1)
       react: 18.3.1
     transitivePeerDependencies:
@@ -3666,6 +3672,12 @@ snapshots:
 
   punycode@2.3.1: {}
 
+  pvtsutils@1.3.6:
+    dependencies:
+      tslib: 2.8.1
+
+  pvutils@1.1.5: {}
+
   queue-microtask@1.2.3: {}
 
   react-dom@18.3.1(react@18.3.1):
@@ -3997,6 +4009,8 @@ snapshots:
       typescript: 5.9.3
 
   ts-interface-checker@0.1.13: {}
+
+  tslib@2.8.1: {}
 
   type-check@0.4.0:
     dependencies:
