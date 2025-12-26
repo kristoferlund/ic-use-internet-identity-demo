@@ -34,8 +34,8 @@
   "dependencies": {
     "@icp-sdk/auth": "^5",
     "@icp-sdk/core": "^5",
-    "ic-use-actor": "file:../ic-use-actor",
-    "ic-use-internet-identity": "file:../ic-use-internet-identity",
+    "ic-use-actor": "^0.4.0",
+    "ic-use-internet-identity": "^0.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
