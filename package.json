@@ -32,19 +32,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dfinity/agent": "^3.2.7",
-    "@dfinity/auth-client": "^3.2.7",
-    "@dfinity/candid": "^3.2.7",
-    "@dfinity/identity": "^3.2.7",
-    "@dfinity/principal": "^3.2.7",
-    "ic-use-actor": "^0.3.0",
-    "ic-use-internet-identity": "^0.6.1",
+    "@icp-sdk/auth": "^5",
+    "@icp-sdk/core": "^5",
+    "ic-use-actor": "file:../ic-use-actor",
+    "ic-use-internet-identity": "file:../ic-use-internet-identity",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
+    "@icp-sdk/bindgen": "^0.2.1",
     "@types/node": "^22.7.5",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",

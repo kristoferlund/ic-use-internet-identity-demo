@@ -9,12 +9,18 @@
           "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
         }
       },
-      "frontend": {}
+      "frontend": {},
+      "declarations": {
+        "bindings": []
+      }
     },
     "backend": {
       "candid": "src/backend/backend.did",
       "package": "backend",
-      "type": "rust"
+      "type": "rust",
+      "declarations": {
+        "bindings": []
+      }
     },
     "frontend": {
       "dependencies": [
@@ -26,7 +32,10 @@
       "type": "assets",
       "build": [
         "pnpm run build"
-      ]
+      ],
+      "declarations": {
+        "bindings": []
+      }
     }
   },
   "output_env_file": ".env",

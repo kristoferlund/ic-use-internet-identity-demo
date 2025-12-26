@@ -8,12 +8,15 @@ import { Toaster } from "react-hot-toast";
 import {
   createActorHook,
 } from "ic-use-actor";
-import { canisterId, idlFactory } from "../../declarations/backend/index";
-import { _SERVICE } from "../../declarations/backend/backend.did";
+import { _SERVICE, idlFactory } from "./declarations/backend.did";
 import AuthGuard from "./components/AuthGuard.tsx";
 
+if (!process.env.CANISTER_ID_BACKEND) {
+  console.error("CANISTER_ID_BACKEND is not defined.")
+}
+
 export const useBackend = createActorHook<_SERVICE>({
-  canisterId,
+  canisterId: process.env.CANISTER_ID_BACKEND || "",
   idlFactory,
 });
 
